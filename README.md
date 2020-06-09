@@ -7,7 +7,7 @@ A Single component that can be used as:
 - textarea with autoresize. This means the size increases as the textarea fills up
 - checkbox, radio button switch, name it yourself
 
-## Demo
+## [Demo](https://codesandbox.io/s/github/fabrigeas/react-formg-group)
 
 ## Usage
 
@@ -185,3 +185,5 @@ Web accessibility attributes
 ## Todo
 
 - Implement Wari attributes
+
+- Optimise css becase too many redundant rules
