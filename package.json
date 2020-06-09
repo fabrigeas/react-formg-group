@@ -65,7 +65,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "## A vue component that ressembles bootstraps formGroup + formControl",
+  "description": "## A React component that takes the form of most html inputs like text, DatePicker, ColorPicker, textarea etc.",
   "types": "build/js/index.d.ts",
   "main": "build/index.js",
   "module": "build/index.es.js",
