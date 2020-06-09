@@ -1,24 +1,80 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import FormGroup from "./components/FormGroup/FormGroup"
+import { useState } from 'react';
 
 function App() {
+  const [value, setValue] = useState("true");
+  const [color, setColor] = useState("#661515");
+  const [textarea, setTextarea] = useState("");
+  const [selected, setSelected] = useState("Beta");
+  const [date, setDate] = useState(new Date().toUTCString());
+  const onChange = ({ target }: any) => setValue(target.value)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{
+      padding: "2rem",
+      margin: "auto",
+      width: "80%",
+    }}
+    >
+      <FormGroup 
+        value={value} 
+        onChange={onChange}
+        label="Hello"
+        invalid={value.length < 3}
+        invalidFeedback={"This is wrong"}
+        validFeedback={"I like this"}
+        data={{
+          name: "fabrigeas",
+          age:30,
+        }}
+        events={{
+          onKeyUp: (event: any) => console.log(event.target.value)
+        }}
+        attrs = {{
+          required: true,
+          autoComplete: "off",
+          name: "Name"
+        }}
+
+        classes="green red yellow blue"
+      />
+  
+      Textarea: {textarea}
+      <FormGroup 
+        type="textarea" 
+        value={textarea} 
+        onChange={({target}: any) => setTextarea(target.value)} 
+      >
+      </FormGroup>
+
+
+      Datepicker: {date}
+      <FormGroup 
+        type="date" 
+        value={date} 
+        onChange={({target}: any) => setDate(target.value)} 
+      />
+
+      ColorPicker: {color}
+      <FormGroup 
+        type="color" 
+        value={color} 
+        onChange={({target}: any) => setColor(target.value)} 
+      />
+
+      Select: {selected}
+      <FormGroup 
+        type="select" 
+        value={value} 
+        onChange={({target}: any) => setSelected(target.value)} 
+      >
+        <option>Alpha</option>
+        <option>Beta</option>
+        <option>Charly</option>
+      </FormGroup>
+
     </div>
   );
 }

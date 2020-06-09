@@ -6,14 +6,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/autosize": "^3.0.7",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.45",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/uuid": "^8.0.0",
+    "autosize": "^4.0.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "uuid": "^8.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
