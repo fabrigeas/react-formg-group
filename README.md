@@ -191,3 +191,5 @@ Web accessibility attributes
 - Optimise css becase too many redundant rules
 
 - Implement Storybook
+
+- Add Error boundary
