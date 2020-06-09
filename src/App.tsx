@@ -7,7 +7,7 @@ function App() {
   const [color, setColor] = useState("#661515");
   const [textarea, setTextarea] = useState("");
   const [selected, setSelected] = useState("Beta");
-  const [date, setDate] = useState(new Date().toUTCString());
+  const [date, setDate] = useState("1989-09-23");
   const onChange = ({ target }: any) => setValue(target.value)
 
   return (
