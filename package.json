@@ -27,6 +27,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
     "typescript": "^3.7.5",
     "uuid": "^8.1.0"
   },
@@ -41,8 +44,11 @@
     "build:babel:esm": "cross-env BABEL_ENV=production=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
     "build:babel:umd": "cross-env BABEL_ENV=production=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
     "build:types": "tsc -p tsconfig.gen-dts.json",
-    "build:clean": "rimraf dist",
-    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose"
+    "build:clean": "rimraf build",
+    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose",
+    "rollup": "npm run build:clean && npm run build:rollup",
+    "build:rollup": "rollup -c",
+    "build:start": "rollup -c -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,9 +66,12 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "dist/js/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/js/index.d.ts",
+  "types": "build/js/index.d.ts",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "files": [
+    "build"
+  ],
   "publishConfig": {
     "access": "public",
     "tag": "prerelease"
@@ -70,8 +79,13 @@
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/plugin-proposal-export-default-from": "^7.10.1",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-plugin-typescript-to-proptypes": "^1.3.2"
+    "babel-plugin-typescript-to-proptypes": "^1.3.2",
+    "babel-runtime": "^6.26.0",
+    "rollup": "^2.15.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.27.1"
   },
   "repository": {
     "type": "git",
