@@ -1,44 +1,187 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-form-group
 
-## Available Scripts
+This is a react single component that mimics most of the HTMLInputElements.
 
-In the project directory, you can run:
+A Single component that can be used as:
+- input of all the types i.e text, datepicked, colorpicker, numberpicker, name it yourself.
+- textarea with autoresize. This means the size increases as the textarea fills up
+- checkbox, radio button switch, name it yourself
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    npm install react-form-group
 
-### `npm test`
+    import FormGroup from "react-form-group"
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    <FormGroup value={value} onChange={onChange}
+      label="Hello"
+        invalid={value.length < 3}
+        invalidFeedback={"This is wrong"}
+        validFeedback={"I like this"}
+        data={{
+          name: "fabrigeas",
+          age:30,
+        }}
+        events={{
+          onKeyUp: console.error
+        }}
+        attrs = {{
+          required: true,
+          autoComplete: "off",
+          name: "Name"
+        }}
 
-### `npm run build`
+        classes="green red yellow blue"
+      />
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Parameters
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    <FormGroup params:FormGroupParams />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    FormGroupParams {
+      value: any,
+      onChange: any,
+      type?: string,
+      label?: string,
+      children?: any,
+      attrs?: any,
+      data?: Object,
+      events?: Object,
+      style?: Object,
+      classes?: string,
+      invalid?: Boolean,
+      invalidFeedback?: string,
+      validFeedback?: string,
+    }
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### value: {any}[Required] - the value of the input
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+    />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### onChange: {function}[Required] - the callback function to handle changes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+    />
 
-## Learn More
+### type: {String}[optional] default is input type="text"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      label="Some label"
+    />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### label: {String}[optional]
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      label="Some label"
+    />
+
+### children: {JSX[]} [Optional] Only for select (i.e. the options)
+
+    <FormGroup type="select" value={value} onChange={onChange} >
+      <option>Alpha</option>
+      <option>Beta</option>
+      <option>Charly</option>
+    </FormGroup>
+
+### attrs: {Object}[Optional] contains your html attributes
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      attrs = {{
+        required: true,
+        autoComplete: "off",
+        name: "Name"
+      }}
+    />
+
+### data: {Object}[Optional] contains your dataset properties
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      data={{
+          name: "fabrigeas",
+          age:30,
+        }}
+    />
+
+### events: {Object}[Optional] contains your React.Events
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+       events={{
+          onKeyUp: console.log,
+          onKeyDown: console.log,
+        }}
+    />
+
+
+### style: {Object}[Optional] contains the styles for the input
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      label="Some label"
+    />
+
+### classes {String}[Optional] a space or comma separated string of 
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      classes="alpha beta"
+    />
+
+### invalid {Boolean} [optional] default is false
+
+Determines the color of the input border.
+green for valid, red for invalid
+
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      classes="alpha beta"
+    />
+
+### invalidFeedback {String} [optional]
+
+An error message to display below the input
+Must be combined with invalid=true
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      invalidFeedback="Please fill this input"
+    />
+
+### valid-feedback {String} [optional]
+
+A success message to display below the input
+Must be combined with invalid=false
+    <FormGroup 
+      value={value} 
+      onChange={onChange}
+      validFeedback="looks good"
+    />
+
+## wari {Object}[optional] (comming soon)
+
+Web accessibility attributes
+
+
+## Todo
+
+- Implement Wari attributes
