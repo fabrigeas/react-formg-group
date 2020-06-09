@@ -1,4 +1,4 @@
-# react-form-group
+# @fabrigeas/react-form-group
 
 This is a react single component that mimics most of the HTMLInputElements.
 
@@ -7,11 +7,13 @@ A Single component that can be used as:
 - textarea with autoresize. This means the size increases as the textarea fills up
 - checkbox, radio button switch, name it yourself
 
-## [Demo](https://codesandbox.io/s/github/fabrigeas/react-formg-group)
+## Demo
+
+- [Codesandbox](https://codesandbox.io/s/github/fabrigeas/react-formg-group)
 
 ## Usage
 
-    npm install react-form-group
+    npm install @fabrigeas/react-form-group
 
     import FormGroup from "react-form-group"
 
@@ -167,7 +169,7 @@ Must be combined with invalid=true
       invalidFeedback="Please fill this input"
     />
 
-### valid-feedback {String} [optional]
+### validFeedback {String} [optional]
 
 A success message to display below the input
 Must be combined with invalid=false
