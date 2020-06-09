@@ -2,6 +2,7 @@ import React from 'react';
 import './FormGroup.scss';
 import autosize from 'autosize';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 export interface FormGroupParams {
   children?: any,
@@ -25,7 +26,7 @@ export interface FormGroupParams {
  * 
  * @returns {Component}
  */
-export default ({
+const FormGroup = ({
   children,
   label,
   type = "text",
@@ -39,7 +40,7 @@ export default ({
   events,
   style,
   classes = "",
-}: FormGroupParams) => {
+}: FormGroupParams): any => {
 
   const id = uuidv4();
   const props = {
@@ -60,7 +61,6 @@ export default ({
     }
   }
 
-
   const component = type === "textarea" ? <textarea {...props} ref={(e:any) =>  autosize(e)}/> :
                     type === "select"   ? <select {...props}>{children}</select> :
                                           <input {...props}/>;
@@ -74,3 +74,32 @@ export default ({
     </div>
   )
 }
+
+FormGroup.propTypes = {
+  label: PropTypes.string,
+  type: PropTypes.string,
+  invalid: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  invalidFeedback: PropTypes.string,
+  validFeedback: PropTypes.string,
+  attrs: PropTypes.object,
+  data: PropTypes.object,
+  events: PropTypes.object,
+  style: PropTypes.object,
+  classes: PropTypes.string,
+};
+
+FormGroup.defaultProps = {
+  type: "text",
+  invalid: false,
+  invalidFeedback: undefined,
+  validFeedback: undefined,
+  attrs: {
+    required: false,
+  },
+  classes: ""
+};
+
+
+export default FormGroup;

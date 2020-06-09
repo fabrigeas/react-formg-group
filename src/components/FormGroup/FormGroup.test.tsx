@@ -76,7 +76,7 @@ describe("<FormGroup/>", () => {
   });
 
   it("Should accept classes", () => {
-    const value = true;
+    const value = "true";
     const type = "checkbox";
     const alpha = "alpha";
     const beta = "beta";
