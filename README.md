@@ -13,7 +13,7 @@ A Single component that can be used as:
 
 ## Usage
 
-    npm install react-form-group
+    npm install @fabrigeas/react-form-group
 
     import FormGroup from "react-form-group"
 
@@ -169,7 +169,7 @@ Must be combined with invalid=true
       invalidFeedback="Please fill this input"
     />
 
-### valid-feedback {String} [optional]
+### validFeedback {String} [optional]
 
 A success message to display below the input
 Must be combined with invalid=false
