@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import FormGroup from "./components/FormGroup/FormGroup"
-import { useState } from 'react';
 
 function App() {
   const [value, setValue] = useState("true");

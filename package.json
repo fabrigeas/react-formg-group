@@ -1,7 +1,7 @@
 {
-  "name": "react-form-group",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@fabrigeas/react-form-group",
+  "version": "1.0.9",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -17,9 +17,13 @@
     "@types/uuid": "^8.0.0",
     "autosize": "^4.0.2",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
     "node-sass": "^4.14.1",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -30,7 +34,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:lib": "npm run build:clean && npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
+    "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
+    "build:babel:cjs": "cross-env BABEL_ENV=production=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
+    "build:babel:esm": "cross-env BABEL_ENV=production=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
+    "build:babel:umd": "cross-env BABEL_ENV=production=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
+    "build:clean": "rimraf dist",
+    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,5 +58,38 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "dist/js/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/js/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "tag": "prerelease"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/plugin-proposal-export-default-from": "^7.10.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^1.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabrigeas/react-formg-group.git"
+  },
+  "keywords": [
+    "react",
+    "form",
+    "HTMLFormInputElements",
+    "enzymes",
+    "chai",
+    "scss",
+    "typescript"
+  ],
+  "author": "Fabrice Feugang Kemegni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabrigeas/react-formg-group/issues"
+  },
+  "homepage": "https://github.com/fabrigeas/react-formg-group#readme"
 }
