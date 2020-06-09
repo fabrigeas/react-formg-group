@@ -1,1 +1,3 @@
-export * from './FormGroup/FormGroup';
+import FormGroup from "./FormGroup/FormGroup";
+
+export { FormGroup };
