@@ -61,16 +61,18 @@ const FormGroup = ({
     }
   }
 
-  const component = type === "textarea" ? <textarea {...props} ref={(e:any) =>  autosize(e)}/> :
-                    type === "select"   ? <select {...props}>{children}</select> :
-                                          <input {...props}/>;
+  const component = type === "textarea" ? <textarea {...props} ref={(e: any) => autosize(e)} /> :
+    type === "select" ? <select {...props}>{children}</select> :
+      <input {...props} />;
 
   return (
     <div className={`form-group ${type}`}>
-      {label && <label className="form-label" htmlFor={id}>{label}</label>}
-      {component}
-      {validFeedback && <div className="valid-feedback"> {validFeedback} </div>}
-      {invalidFeedback && <div className="invalid-feedback"> {invalidFeedback} </div>}
+      <ErrorBoundary>
+        {label && <label className="form-label" htmlFor={id}>{label}</label>}
+        {component}
+        {validFeedback && <div className="valid-feedback"> {validFeedback} </div>}
+        {invalidFeedback && <div className="invalid-feedback"> {invalidFeedback} </div>}
+      </ErrorBoundary>
     </div>
   )
 }
@@ -79,7 +81,7 @@ FormGroup.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   invalid: PropTypes.bool,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
   onChange: PropTypes.func.isRequired,
   invalidFeedback: PropTypes.string,
   validFeedback: PropTypes.string,
@@ -101,5 +103,38 @@ FormGroup.defaultProps = {
   classes: ""
 };
 
+class ErrorBoundary extends React.Component {
+
+  state = {
+    hasError: false,
+    error: null,
+    errorInfo: null,
+  }
+
+  static getDerivedStateFromError(error: any) {
+    return {
+      hasError: true,
+      error,
+    };
+
+  }
+
+  componentDidCatch(error: any, errorInfo: any) {
+    this.setState({
+      hasError: true,
+      error,
+      errorInfo,
+    })
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1 className="error-boundary">Something went wrong. </h1>;
+    } else {
+      return this.props.children;
+    }
+
+  }
+}
 
 export default FormGroup;

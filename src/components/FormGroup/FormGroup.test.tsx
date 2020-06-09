@@ -100,6 +100,70 @@ describe("<FormGroup/>", () => {
 
   });
 
+  describe("Should accept value", () => {
+
+    it("text", () => {
+      const value = "fabrigeas";
+      let formGroupParams: FormGroupParams = {
+        onChange,
+        value,
+      }
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(`input[type='text'][value='${value}']`).exists()).to.equal(true);
+
+    });
+
+    it("number", () => {
+      const value = -123;
+      const type = "number";
+      let formGroupParams: FormGroupParams = {
+        onChange,
+        value,
+        type,
+      }
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(`input[type='${type}']`).exists()).to.equal(true);
+
+    });
+
+    it("date", () => {
+      const value = new Date().toDateString();
+      const type = "date";
+      let formGroupParams: FormGroupParams = {
+        onChange,
+        value,
+        type,
+      }
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(`input[type='${type}']`).exists()).to.equal(true);
+
+    });
+
+    it("boolean", () => {
+      const value = false;
+      let formGroupParams: FormGroupParams = {
+        onChange,
+        value,
+      }
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(`input[value=${value}]`).exists()).to.equal(true);
+
+    });
+
+  });
+
   describe("Should accept invalid", () => {
 
     it("Should be valid by default", () => {
@@ -231,7 +295,7 @@ describe("<FormGroup/>", () => {
 
     const value = "Hello";
     let formGroupParams: FormGroupParams = {
-      type:"select",
+      type: "select",
       onChange,
       value,
       children
@@ -240,7 +304,7 @@ describe("<FormGroup/>", () => {
       <FormGroup {...formGroupParams} />
     );
 
-    expect(wrapper.find("option") ).to.have.lengthOf(children.length)
+    expect(wrapper.find("option")).to.have.lengthOf(children.length)
 
   });
 
@@ -262,11 +326,11 @@ describe("<FormGroup/>", () => {
 
       const input = wrapper.find("input");
 
-      expect( input.at(0).prop("onKeyUp") ).not.to.be.undefined
-      expect( input.at(0).prop("onKeyDown") ).not.to.be.undefined
+      expect(input.at(0).prop("onKeyUp")).not.to.be.undefined
+      expect(input.at(0).prop("onKeyDown")).not.to.be.undefined
       // expect( input.at(0).prop("onKeyUp") ).to.have.lengthOf(1);
       // expect( input.at(0).prop("onKeyDown") ).to.have.lengthOf(1);
-      expect( input.at(0).prop("onFocus") ).to.be.undefined
+      expect(input.at(0).prop("onFocus")).to.be.undefined
 
     });
 
@@ -285,14 +349,14 @@ describe("<FormGroup/>", () => {
         <FormGroup {...formGroupParams} />
       );
 
-      wrapper.find("input").at(0).simulate('keyup', { 
-        target: { 
-          key: 'up', 
-          value: "U" 
-        } 
+      wrapper.find("input").at(0).simulate('keyup', {
+        target: {
+          key: 'up',
+          value: "U"
+        }
       }
       );
-      expect( value ).equal( "U");
+      expect(value).equal("U");
 
     });
 
@@ -311,19 +375,56 @@ describe("<FormGroup/>", () => {
         <FormGroup {...formGroupParams} />
       );
 
-      wrapper.find("input").at(0).simulate('keyup', { 
-        target: { 
-          key: 'down', 
-          value: "D" 
-        } 
+      wrapper.find("input").at(0).simulate('keyup', {
+        target: {
+          key: 'down',
+          value: "D"
+        }
       }
       );
-      expect( value ).equal( "D");
+      expect(value).equal("D");
 
     });
 
   });
 
+  describe("ErrorBoundary", () => {
+
+    it("Should catch an Error", () => {
+
+      const Option = <option key="bla">{new Error('gotcha!')}</option>;
+      const formGroupParams: FormGroupParams = {
+        onChange,
+        type: "select",
+        value: -1,
+        children: [Option]
+      }
+
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(".error-boundary").exists()).to.equal(true)
+
+    });
+
+    it("Should catch No Error", () => {
+
+      const formGroupParams: FormGroupParams = {
+        onChange,
+        value: -1,
+      }
+
+      const wrapper = mount(
+        <FormGroup {...formGroupParams} />
+      );
+
+      expect(wrapper.find(".error-boundary").exists()).to.equal(false)
+
+    });
+
+
+  });
 
   // describe("invalidFeedback", () => {
 

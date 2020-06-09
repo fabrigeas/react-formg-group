@@ -187,3 +187,5 @@ Web accessibility attributes
 - Implement Wari attributes
 
 - Optimise css becase too many redundant rules
+
+- Add default patterns
