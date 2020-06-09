@@ -1,4 +1,4 @@
-# react-form-group
+# @fabrigeas/react-form-group
 
 This is a react single component that mimics most of the HTMLInputElements.
 
