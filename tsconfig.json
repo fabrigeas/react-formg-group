@@ -17,9 +17,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+
+    "declaration": true,
+    "declarationDir": "build"
   },
   "include": [
-    "src", "rollup.config.js"
+    "src/components/FormGroup/",
+  ],
+  "exclude": [
+    "src/components/FormGroup/FormGroup.test.tsx",
+    "src/components/index.tsx",
   ]
 }

@@ -3,7 +3,6 @@ import resolve from "rollup-plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
 import sass from "rollup-plugin-sass";
 import commonjs from "rollup-plugin-commonjs";
-// import copy from "rollup-plugin-copy";
 
 import packageJson from "./package.json";
 
@@ -26,9 +25,7 @@ export default {
     resolve(),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
-    sass({
-      insert: true
-    })
+    sass({ insert: true })
   ],
 
 };
