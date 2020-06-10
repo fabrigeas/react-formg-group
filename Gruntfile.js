@@ -35,7 +35,8 @@ module.exports = function (grunt) {
       view: "npm view @fabrigeas/react-form-group",
       cleanBuild: "rimraf build",
       cleanDT: "rimraf build/FormGroup",
-      commit: "git add --all && git commit -am 'publishing'",
+      addAll: "git add --all",
+      commit: "git commit -am 'publishing'",
       pushMaster: "git push origin master",
       pushTags: "git push --tags",
       version: "npm view",
@@ -51,7 +52,8 @@ module.exports = function (grunt) {
   grunt.registerTask("publish", "Publish the library to npm.", function () {
     grunt.task.run([
       "shell:unpublish",
-      "shell:commit",
+      // "shell:addAll",
+      // "shell:commit",
       "shell:cleanBuild",
       "shell:build",
       "shell:copyDTFile",
