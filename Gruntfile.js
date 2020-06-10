@@ -1,11 +1,14 @@
 module.exports = function (grunt) {
   // https://www.npmjs.com/package/grunt-shell
 
+
+  const pkg = grunt.file.readJSON("package.json");
+
   /** Generate a version higher than the current version
    *
    */
   const generateVersion = () => {
-    const [a, b, c] = grunt.config("pkg").version.split(".");
+    const [a, b, c] = pkg.version.split(".");
     const major = Number(a);
     const minor = Number(b);
     const patch = Number(c);
@@ -18,8 +21,6 @@ module.exports = function (grunt) {
   };
 
   grunt.loadNpmTasks("grunt-shell");
-
-  const pkg = grunt.file.readJSON("package.json");
 
   grunt.initConfig({
     pkg,
@@ -37,8 +38,8 @@ module.exports = function (grunt) {
       commit: "git add --all && git commit -am 'publishing'",
       pushMaster: "git push origin master",
       pushTags: "git push --tags",
+      version: "npm view",
       publish: "npm publish --access=public",
-      version: "npm version",
       copy: {
         command: (src, dest) => `cp ${src} ${dest}`,
       },
