@@ -39,6 +39,7 @@ module.exports = function (grunt) {
       pushMaster: "git push origin master",
       pushTags: "git push --tags",
       version: "npm view",
+      unpublish: `npm unpublish ${pkg.name} -f`,
       publish: "npm publish --access=public",
       copy: {
         command: (src, dest) => `cp ${src} ${dest}`,
@@ -49,6 +50,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("publish", "Publish the library to npm.", function () {
     grunt.task.run([
+      "shell:unpublish",
       "shell:commit",
       "shell:cleanBuild",
       "shell:build",
