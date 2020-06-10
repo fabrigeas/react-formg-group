@@ -18,16 +18,15 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-
     "declaration": true,
     "declarationDir": "build",
     "declarationMap": true
   },
   "include": [
-    "src/components/FormGroup/",
+    "src/components/FormGroup/"
   ],
   "exclude": [
     "src/components/FormGroup/FormGroup.test.tsx",
-    "src/components/index.tsx",
+    "src/components/index.tsx"
   ]
 }
