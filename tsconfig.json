@@ -20,7 +20,8 @@
     "jsx": "react",
 
     "declaration": true,
-    "declarationDir": "build"
+    "declarationDir": "build",
+    "declarationMap": true
   },
   "include": [
     "src/components/FormGroup/",

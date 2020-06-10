@@ -38,17 +38,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:lib": "npm run build:clean && npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
-    "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
-    "build:babel:cjs": "cross-env BABEL_ENV=production=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
-    "build:babel:esm": "cross-env BABEL_ENV=production=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
-    "build:babel:umd": "cross-env BABEL_ENV=production=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
-    "build:types": "tsc -p tsconfig.gen-dts.json",
-    "build:clean": "rimraf build",
     "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose",
-    "rollup": "npm run build:clean && npm run build:rollup",
-    "build:rollup": "rollup -c",
-    "build:start": "rollup -c -w"
+    "build:lib": "npm run build:clean && npm run rollup && npm run copyDTFile && npm run copyMapFile && npm run clanDT",
+    "rollup": "rollup -c",
+    "copyDTFile": "cp build/FormGroup/FormGroup.d.ts build/index.d.ts",
+    "copyMapFile": "cp build/FormGroup/FormGroup.d.ts.map build/index.d.ts.map",
+    "clanDT": "rimraf build/FormGroup",
+    "build:clean": "rimraf build",
+    "build:watch": "rollup -c -w"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,7 +64,7 @@
     ]
   },
   "description": "## A React component that takes the form of most html inputs like text, DatePicker, ColorPicker, textarea etc.",
-  "types": "build/components/FormGroup/index.d.ts",
+  "types": "build/index.d.ts",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
