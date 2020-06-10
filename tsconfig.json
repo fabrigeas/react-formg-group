@@ -22,6 +22,7 @@
     "declarationDir": "build",
     "declarationMap": true
   },
+  
   "include": [
     "src/components/FormGroup/"
   ],
