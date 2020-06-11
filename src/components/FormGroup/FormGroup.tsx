@@ -1,14 +1,14 @@
-import React, { ReactElement, ErrorInfo } from 'react';
+import React, { ReactElement, ErrorInfo, ChangeEventHandler } from 'react';
 import './FormGroup.scss';
 import autosize from 'autosize';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface FormGroupParams {
   children?: React.ReactNode,
-  attrs?: any,
+  attrs?: React.HTMLProps<Element>,
   data?: Object,
   events?: Object,
-  onChange: any,
+  onChange: ChangeEventHandler,
   label?: string,
   type?: string,
   style?: Object,
