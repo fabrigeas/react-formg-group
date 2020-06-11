@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import './App.scss';
 import FormGroup from "./components/FormGroup/FormGroup"
 
@@ -8,7 +8,6 @@ function App() {
   const [textarea, setTextarea] = useState("");
   const [selected, setSelected] = useState("Beta");
   const [date, setDate] = useState("1989-09-23");
-  const onChange = ({ target }: any) => setValue(target.value)
 
   return (
     <div className="App" style={{
@@ -17,21 +16,21 @@ function App() {
       width: "80%",
     }}
     >
-      <FormGroup 
-        value={value} 
-        onChange={onChange}
+      <FormGroup
+        value={value}
+        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setValue(target.value)}
         label="Hello"
         invalid={value.length < 3}
         invalidFeedback={"This is wrong"}
         validFeedback={"I like this"}
         data={{
           name: "fabrigeas",
-          age:30,
+          age: 30,
         }}
         events={{
-          onKeyUp: (event: any) => console.log(event.target.value)
+          onKeyUp: (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value)
         }}
-        attrs = {{
+        attrs={{
           required: true,
           autoComplete: "off",
           name: "Name"
@@ -39,35 +38,35 @@ function App() {
 
         classes="green red yellow blue"
       />
-  
+
       Textarea: {textarea}
-      <FormGroup 
-        type="textarea" 
-        value={textarea} 
-        onChange={({target}: any) => setTextarea(target.value)} 
+      <FormGroup
+        type="textarea"
+        value={textarea}
+        onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setTextarea(target.value)}
       >
       </FormGroup>
 
 
       Datepicker: {date}
-      <FormGroup 
-        type="date" 
-        value={date} 
-        onChange={({target}: any) => setDate(target.value)} 
+      <FormGroup
+        type="date"
+        value={date}
+        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setDate(target.value)}
       />
 
       ColorPicker: {color}
-      <FormGroup 
-        type="color" 
-        value={color} 
-        onChange={({target}: any) => setColor(target.value)} 
+      <FormGroup
+        type="color"
+        value={color}
+        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setColor(target.value)}
       />
 
       Select: {selected}
-      <FormGroup 
-        type="select" 
-        value={value} 
-        onChange={({target}: any) => setSelected(target.value)} 
+      <FormGroup
+        type="select"
+        value={value}
+        onChange={({ target }: React.ChangeEvent<HTMLSelectElement>) => setSelected(target.value)}
       >
         <option>Alpha</option>
         <option>Beta</option>

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { ReactElement, ErrorInfo } from 'react';
 import './FormGroup.scss';
 import autosize from 'autosize';
 import { v4 as uuidv4 } from 'uuid';
-import PropTypes from 'prop-types';
 
 export interface FormGroupParams {
-  children?: any,
+  children?: React.ReactNode,
   attrs?: any,
   data?: Object,
   events?: Object,
@@ -18,6 +17,7 @@ export interface FormGroupParams {
   invalid?: Boolean,
   invalidFeedback?: string,
   validFeedback?: string,
+  [index: string]: any,
 }
 
 /** Creates an input component
@@ -40,10 +40,10 @@ const FormGroup = ({
   events,
   style,
   classes = "",
-}: FormGroupParams): any => {
+}: FormGroupParams): ReactElement => {
 
   const id = uuidv4();
-  const props = {
+  const props: FormGroupParams = {
     id,
     type,
     value,
@@ -77,41 +77,25 @@ const FormGroup = ({
   )
 }
 
-FormGroup.propTypes = {
-  label: PropTypes.string,
-  type: PropTypes.string,
-  invalid: PropTypes.bool,
-  value: PropTypes.any.isRequired,
-  onChange: PropTypes.func.isRequired,
-  invalidFeedback: PropTypes.string,
-  validFeedback: PropTypes.string,
-  attrs: PropTypes.object,
-  data: PropTypes.object,
-  events: PropTypes.object,
-  style: PropTypes.object,
-  classes: PropTypes.string,
-};
+interface Props {
+  children: React.ReactNode
+}
 
-FormGroup.defaultProps = {
-  type: "text",
-  invalid: false,
-  invalidFeedback: undefined,
-  validFeedback: undefined,
-  attrs: {
-    required: false,
-  },
-  classes: ""
-};
+type State  = {
+  hasError: boolean,
+  error: Error | null,
+  errorInfo: ErrorInfo | null,
+}
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component<Props, State> {
 
-  state = {
+  state: State = {
     hasError: false,
     error: null,
     errorInfo: null,
   }
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: Error) {
     return {
       hasError: true,
       error,
@@ -119,7 +103,7 @@ class ErrorBoundary extends React.Component {
 
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({
       hasError: true,
       error,
