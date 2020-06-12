@@ -20,23 +20,28 @@ function App() {
         value={value}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setValue(target.value)}
         label="Hello"
-        invalid={value.length < 3}
+        invalid={value.length < 1}
         invalidFeedback={"This is wrong"}
         validFeedback={"I like this"}
         data={{
           name: "fabrigeas",
           age: 30,
         }}
-        events={{
-          onKeyUp: (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value)
-        }}
         attrs={{
           required: true,
           autoComplete: "off",
           name: "Name"
         }}
-
+        style={{
+          background: "none"
+        }}
+        aria={{
+          "aria-details": "Well-aria-works fine"
+        }}
         classes="green red yellow blue"
+        events={{
+          onKeyUp: (event) => setValue(event.key)
+        }}
       />
 
       Textarea: {textarea}

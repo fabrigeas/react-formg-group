@@ -1,0 +1,51 @@
+[33m1dbb6b9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;33mtag: v3.2.0[m[33m, [m[1;31morigin/master[m[33m)[m 3.2.0
+[33me12af46[m typechecking synthetic events
+[33ma15c00a[m[33m ([m[1;33mtag: v3.1.9[m[33m)[m 3.1.9
+[33m976c2d5[m more types checking
+[33mb952003[m[33m ([m[1;33mtag: v3.1.8[m[33m)[m 3.1.8
+[33m27241da[m cleanup
+[33m8031f0c[m[33m ([m[1;33mtag: v3.1.7[m[33m)[m 3.1.7
+[33m1390d29[m 'publishing'
+[33m24e3619[m fixed fileParsingError
+[33m4ae73b4[m[33m ([m[1;33mtag: v3.1.6[m[33m)[m 3.1.6
+[33m7b57ab1[m 'publishing'
+[33m8ecc047[m[33m ([m[1;33mtag: v3.1.5[m[33m)[m 3.1.5
+[33ma56e662[m 'publishing'
+[33m12110d8[m automatic deployment with grunt
+[33m0515809[m[33m ([m[1;33mtag: v3.1.4[m[33m)[m 3.1.4
+[33ma7ca292[m generate declaration files
+[33m14f4838[m[33m ([m[1;33mtag: v3.1.3[m[33m)[m 3.1.3
+[33mafd755c[m new build config to produce declarations file
+[33m60445ba[m readme
+[33mf2c5d79[m demo
+[33m41873a7[m[33m ([m[1;33mtag: v3.1.2[m[33m)[m 3.1.2
+[33m4a5add1[m added Error boundary + fix props.value.type
+[33mfcc8d8e[m readme
+[33me20702d[m Update README.md
+[33m20b4e4c[m readme
+[33m694e955[m Update README.md
+[33m01bda8d[m linkto demo
+[33mfc6febe[m remove homepage to run as normal app
+[33mbde135a[m[33m ([m[1;33mtag: v3.1.1[m[33m)[m 3.1.1
+[33mce78adb[m propTypes
+[33m396acd2[m[33m ([m[1;33mtag: v3.1.0[m[33m)[m 3.1.0
+[33m535848e[m ReadMe
+[33mc1d43f9[m[33m ([m[1;33mtag: v3.0.9[m[33m)[m 3.0.9
+[33m40d1b3d[m[33m ([m[1;33mtag: v3.0.8[m[33m)[m 3.0.8
+[33me20d62d[m bug fixing
+[33md6ce8c3[m[33m ([m[1;33mtag: v3.0.7[m[33m)[m 3.0.7
+[33m4249ce5[m[33m ([m[1;33mtag: v3.0.6[m[33m)[m 3.0.6
+[33m84be6e1[m[33m ([m[1;33mtag: v3.0.5[m[33m)[m 3.0.5
+[33m3fd8b6e[m[33m ([m[1;33mtag: v3.0.4[m[33m)[m 3.0.4
+[33md88651a[m[33m ([m[1;33mtag: v3.0.3[m[33m)[m 3.0.3
+[33m341e4e4[m ReadMe
+[33mb0ae588[m[33m ([m[1;33mtag: v3.0.2[m[33m)[m 3.0.2
+[33m5e725d5[m publish with rollup
+[33ma19ae46[m[33m ([m[1;33mtag: v3.0.1[m[33m)[m 3.0.1
+[33m2007321[m[33m ([m[1;33mtag: v3.0.0[m[33m)[m 3.0.0
+[33m1b3c688[m 2.0.1
+[33md1ead48[m 2.0.0
+[33mc1d0318[m publishing
+[33m3123104[m enzyme testing
+[33mb7fa640[m component created
+[33m57ecd24[m Initialize project using Create React App

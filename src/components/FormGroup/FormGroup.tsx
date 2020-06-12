@@ -1,4 +1,4 @@
-import React, { ReactElement, ErrorInfo, ChangeEventHandler } from 'react';
+import React, { ReactElement, ErrorInfo, ChangeEventHandler, ReactNode } from 'react';
 import './FormGroup.scss';
 import autosize from 'autosize';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,17 +7,18 @@ export interface FormGroupParams {
   children?: React.ReactNode,
   attrs?: React.HTMLProps<Element>,
   data?: Object,
-  events?: Object,
+  events?: React.DOMAttributes<ReactNode>,
   onChange: ChangeEventHandler,
   label?: string,
   type?: string,
-  style?: Object,
+  style?: React.CSSProperties,
   classes?: string,
   value: any,
   invalid?: Boolean,
   invalidFeedback?: string,
   validFeedback?: string,
   [index: string]: any,
+  aria?: React.AriaAttributes
 }
 
 /** Creates an input component
@@ -40,6 +41,9 @@ const FormGroup = ({
   events,
   style,
   classes = "",
+  aria = {
+
+  },
 }: FormGroupParams): ReactElement => {
 
   const id = uuidv4();
@@ -52,7 +56,12 @@ const FormGroup = ({
     ...attrs,
     ...events,
     style,
+    ...aria
   }
+
+  // if (aria) {
+  //   props.aria = { ...aria }
+  // }
 
   if (data) {
     for (let entry of Object.entries(data)) {
@@ -81,7 +90,7 @@ interface Props {
   children: React.ReactNode
 }
 
-type State  = {
+type State = {
   hasError: boolean,
   error: Error | null,
   errorInfo: ErrorInfo | null,
