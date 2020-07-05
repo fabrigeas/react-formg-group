@@ -50,9 +50,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask("publish", "Publish the library to npm.", function () {
     grunt.task.run([
-      // "shell:unpublish",
+      "shell:unpublish",
       // "shell:addAll",
-      // "shell:commit",
+      "shell:commit",
       "shell:cleanBuild",
       "shell:build",
       "shell:copyDTFile",
