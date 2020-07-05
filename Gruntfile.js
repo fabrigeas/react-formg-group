@@ -1,7 +1,6 @@
 module.exports = function (grunt) {
   // https://www.npmjs.com/package/grunt-shell
 
-
   const pkg = grunt.file.readJSON("package.json");
 
   /** Generate a version higher than the current version
@@ -51,7 +50,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("publish", "Publish the library to npm.", function () {
     grunt.task.run([
-      "shell:unpublish",
+      // "shell:unpublish",
       // "shell:addAll",
       // "shell:commit",
       "shell:cleanBuild",
@@ -66,5 +65,5 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('default', ['shell:version']);
+  grunt.registerTask("default", ["shell:version"]);
 };
