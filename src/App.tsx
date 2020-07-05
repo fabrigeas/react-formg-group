@@ -27,6 +27,8 @@ function App() {
         <li>Select: {selected} </li>
         <li>Date: {date}</li>
       </ul>
+
+      <h2>Below are some examples of how this components appear</h2>
       <FormGroup
         value={value}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setValue(target.value)}
