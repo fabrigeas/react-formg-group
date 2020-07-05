@@ -8,6 +8,8 @@ function App() {
   const [textarea, setTextarea] = useState("");
   const [selected, setSelected] = useState("Beta");
   const [date, setDate] = useState("1989-09-23");
+  const [number, setNumber] = useState(0);
+  const [week, setWeek] = useState("");
 
   return (
     <div className="App" style={{
@@ -16,6 +18,15 @@ function App() {
       width: "80%",
     }}
     >
+
+      <ul>
+        <li>Text: {value}</li>
+        <li>Textarea: {textarea}</li>
+        <li>Datepicker: {date}</li>
+        <li>ColorPicker: {color}</li>
+        <li>Select: {selected} </li>
+        <li>Date: {date}</li>
+      </ul>
       <FormGroup
         value={value}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setValue(target.value)}
@@ -40,11 +51,10 @@ function App() {
         }}
         classes="green red yellow blue"
         events={{
-          onKeyUp: (event) => setValue(event.key)
+          // onKeyUp: (event) => setValue(event.key)
         }}
       />
 
-      Textarea: {textarea}
       <FormGroup
         label="Textarea"
         type="textarea"
@@ -53,22 +63,18 @@ function App() {
       >
       </FormGroup>
 
-
-      Datepicker: {date}
       <FormGroup
         type="date"
         value={date}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setDate(target.value)}
       />
 
-      ColorPicker: {color}
       <FormGroup
         type="color"
         value={color}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setColor(target.value)}
       />
 
-      Select: {selected}
       <FormGroup
         type="select"
         value={value}
@@ -79,6 +85,33 @@ function App() {
         <option>Charly</option>
       </FormGroup>
 
+      <div className="flex">
+        <div>
+          <FormGroup type="number"
+            label="Number"
+            invalid={number == 3}
+            value={number}
+            attrs={{
+              min: 0,
+              max: 7
+            }}
+            onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setNumber(Number(target.value))}
+          />
+        </div>
+
+        <div>
+          <FormGroup type="week"
+            label="Week picker"
+            value={week}
+            validFeedback="Looks good"
+            attrs={{
+              required: true
+            }}
+            onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setWeek(target.value)}
+          />
+        </div>
+
+      </div>
     </div>
   );
 }
