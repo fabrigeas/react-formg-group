@@ -59,10 +59,6 @@ const FormGroup = ({
     ...aria
   }
 
-  // if (aria) {
-  //   props.aria = { ...aria }
-  // }
-
   if (data) {
     for (let entry of Object.entries(data)) {
       const [key, value] = entry;
