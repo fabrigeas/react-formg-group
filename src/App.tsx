@@ -46,6 +46,7 @@ function App() {
 
       Textarea: {textarea}
       <FormGroup
+        label="Textarea"
         type="textarea"
         value={textarea}
         onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setTextarea(target.value)}

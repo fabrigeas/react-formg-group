@@ -21,7 +21,7 @@ export interface FormGroupParams {
   aria?: React.AriaAttributes
 }
 
-/** Creates an input component
+/** Creates an input FormControl
  * 
  * @param {Object} props
  * 
@@ -70,7 +70,7 @@ const FormGroup = ({
     }
   }
 
-  const component = type === "textarea" ? <textarea {...props} ref={(e: any) => autosize(e)} /> :
+  const FormControl = type === "textarea" ? <textarea {...props} ref={(e: any) => autosize(e)} /> :
     type === "select" ? <select {...props}>{children}</select> :
       <input {...props} />;
 
@@ -78,7 +78,7 @@ const FormGroup = ({
     <div className={`form-group ${type}`}>
       <ErrorBoundary>
         {label && <label className="form-label" htmlFor={id}>{label}</label>}
-        {component}
+        {FormControl}
         {validFeedback && <div className="valid-feedback"> {validFeedback} </div>}
         {invalidFeedback && <div className="invalid-feedback"> {invalidFeedback} </div>}
       </ErrorBoundary>
