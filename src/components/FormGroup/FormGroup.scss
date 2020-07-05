@@ -1,7 +1,7 @@
 .form-group {
-  margin: 1rem;
+  margin: 0.5rem 0;
   text-align: left;
-  padding: 1rem;
+  padding: 0.5rem 0;
 
   display: -ms-flexbox;
   display: flex;
@@ -13,18 +13,16 @@
   align-items: center;
 
   [type="checkbox"],
-  [type="radio"]
-  {
+  [type="radio"] {
     width: auto;
     border: none;
-    &:focus{
+    &:focus {
       border: none;
     }
   }
 }
 .form-group.radio,
-.form-group.checkbox
-{
+.form-group.checkbox {
   width: auto !important;
 }
 
@@ -35,6 +33,7 @@
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   position: relative;
+  padding: 0 0.5rem;
 
   font-weight: 400;
   line-height: 1.5;
@@ -44,13 +43,18 @@
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  &:focus{
+  &:focus {
     color: #495057;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
+}
+textarea.form-control {
+  padding: 0.5rem;
+  overflow: hidden;
+  outline: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
@@ -91,10 +95,6 @@
   background-color: #e9ecef;
   opacity: 1;
 }
-// select.form-control:focus::-ms-value {
-//   color: #495057;
-//   background-color: #fff;
-// }
 .form-control-file,
 .form-control-range {
   display: block;
@@ -116,7 +116,6 @@
   font-size: 80%;
   color: #dc3545;
 }
-
 
 .is-valid ~ .valid-feedback,
 .is-valid ~ .valid-tooltip,
@@ -207,7 +206,6 @@ textarea.form-control.is-valid {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-
 .is-invalid ~ .invalid-feedback,
 .is-invalid ~ .invalid-tooltip,
 .was-validated :invalid ~ .invalid-feedback,
@@ -295,4 +293,11 @@ textarea.form-control.is-invalid {
 .was-validated .custom-file-input:invalid:focus ~ .custom-file-label {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+label {
+  margin-bottom: -0.4rem;
+  background: white;
+  z-index: 2;
+  margin-left: 0.5rem;
 }
