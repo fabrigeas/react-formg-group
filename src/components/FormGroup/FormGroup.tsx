@@ -52,7 +52,7 @@ const FormGroup = ({
     type,
     value,
     onChange,
-    className: `form-control ${invalid ? 'is-invalid' : 'is-valid'} ${classes}`,
+    className: `form-control ${(attrs.required && (value as string).length < 2) || invalid ? 'is-invalid' : 'is-valid'} ${classes}`,
     ...attrs,
     ...events,
     style,
@@ -122,7 +122,6 @@ class ErrorBoundary extends React.Component<Props, State> {
     } else {
       return this.props.children;
     }
-
   }
 }
 

@@ -104,6 +104,7 @@ function App() {
             label="Week picker"
             value={week}
             validFeedback="Looks good"
+            invalidFeedback="You need to pick a week"
             attrs={{
               required: true
             }}
