@@ -74,12 +74,14 @@ function App() {
       />
 
       <FormGroup
+        label="Color picker"
         type="color"
         value={color}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setColor(target.value)}
       />
 
       <FormGroup
+        label="Select"
         type="select"
         value={value}
         onChange={({ target }: React.ChangeEvent<HTMLSelectElement>) => setSelected(target.value)}
@@ -92,7 +94,7 @@ function App() {
       <div className="flex">
         <div>
           <FormGroup type="number"
-            label="Number"
+            label="Number picker"
             invalid={number == 3}
             value={number}
             attrs={{
