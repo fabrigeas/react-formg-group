@@ -30,7 +30,7 @@ function App() {
       <FormGroup
         value={value}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setValue(target.value)}
-        label="Hello"
+        label="Some label:"
         invalid={value.length < 1}
         invalidFeedback={"This is wrong"}
         validFeedback={"I like this"}
@@ -60,10 +60,14 @@ function App() {
         type="textarea"
         value={textarea}
         onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setTextarea(target.value)}
+        attrs={{
+          placeholder: "Some placeholder. This textarea will auto increase it's own size"
+        }}
       >
       </FormGroup>
 
       <FormGroup
+        label="Date picker"
         type="date"
         value={date}
         onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => setDate(target.value)}
